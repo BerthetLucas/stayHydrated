@@ -1,9 +1,9 @@
 import RNPickerSelect from 'react-native-picker-select';
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 
 interface DropdownProps {
-    onValueChange: (value: string) => void;
-    value?: string;
+    onValueChange: (value: number) => void;
+    value: number;
 }
 
 export const Dropdown = ({onValueChange, value}: DropdownProps) => {
@@ -13,13 +13,13 @@ export const Dropdown = ({onValueChange, value}: DropdownProps) => {
             onValueChange={onValueChange}
             value={value}
             placeholder={{
-                label: 'Sélectionner une durée...',
+                label: 'Select a reminder frequency',
                 value: null,
             }}
             items={[
-                {label: '30 min', value: '30'},
-                {label: '1H', value: '60'},
-                {label: '2H', value: '120'},
+                {label: '30 min', value: 30},
+                {label: '1H', value: 60},
+                {label: '2H', value: 120},
             ]}
             style={pickerSelectStyles}
         />
@@ -27,24 +27,11 @@ export const Dropdown = ({onValueChange, value}: DropdownProps) => {
 };
 
 const pickerSelectStyles = StyleSheet.create({
-    inputIOS: {
-        fontSize: 16,
-        paddingVertical: 12,
-        paddingHorizontal: 10,
-        borderWidth: 1,
-        borderColor: 'gray',
-        borderRadius: 4,
-        color: 'black',
-        paddingRight: 30,
-    },
     inputAndroid: {
         fontSize: 16,
-        paddingHorizontal: 10,
-        paddingVertical: 8,
-        borderWidth: 0.5,
         borderColor: 'purple',
         borderRadius: 8,
         color: 'black',
-        paddingRight: 30,
+        width: 280
     },
 });

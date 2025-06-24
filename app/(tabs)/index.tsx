@@ -8,17 +8,17 @@ export default function HomeScreen() {
 
     const [firstPerson, setFirstPerson] = useState('');
     const [secondPerson, setSecondPerson] = useState('');
-
+    const [reminderFrequency, setReminderFrequency] = useState(0);
 
     const handleSubmit = () => {
         console.log(firstPerson);
         console.log(secondPerson);
+        console.log(reminderFrequency);
     }
 
-    const handleSelect = () => {
-        console.log("coucou");
+    const handleSelect = (value: number) => {
+        setReminderFrequency(value)
     }
-
 
     return (
         <ThemedView style={styles.container}>
@@ -46,8 +46,8 @@ export default function HomeScreen() {
                             autoCorrect={false}
                         />
                     </View>
-                    <View>
-                        <Dropdown onValueChange={handleSelect}/>
+                    <View style={styles.input}>
+                        <Dropdown onValueChange={handleSelect} value={reminderFrequency}/>
                     </View>
                     <TouchableOpacity
                         onPress={handleSubmit}
@@ -81,4 +81,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         gap: 10
     },
+    dropdown: {
+        flexDirection: 'row', alignItems: "center"
+    }
 });
