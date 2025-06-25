@@ -3,6 +3,8 @@ import {ThemedText} from '@/components/ThemedText';
 import {ThemedView} from '@/components/ThemedView';
 import {useState} from "react";
 import {Dropdown} from "@/components/Dropdown";
+import {useNotifications} from "@/hooks/useNotifications";
+import * as Notifications from "expo-notifications";
 
 export default function HomeScreen() {
 
@@ -10,10 +12,28 @@ export default function HomeScreen() {
     const [secondPerson, setSecondPerson] = useState('');
     const [reminderFrequency, setReminderFrequency] = useState(0);
 
+    const {scheduleNotificationAsync, cancelNotificationAsync} =
+        useNotifications();
+
+    const sendNotification = () => {
+        scheduleNotificationAsync({
+            content: {
+                title: `${firstPerson} reminds ${secondPerson} to drink some water !`,
+            },
+            trigger: {
+                type: Notifications.SchedulableTriggerInputTypes.TIME_INTERVAL,
+                seconds: reminderFrequency * 60,
+                repeats: true,
+            },
+        });
+    };
+
+
     const handleSubmit = () => {
         console.log(firstPerson);
         console.log(secondPerson);
         console.log(reminderFrequency);
+        sendNotification();
     }
 
     const handleSelect = (value: number) => {
