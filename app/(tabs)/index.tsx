@@ -28,18 +28,14 @@ export default function HomeScreen() {
         });
     };
 
-
     const handleSubmit = () => {
-        console.log(firstPerson);
-        console.log(secondPerson);
-        console.log(reminderFrequency);
         sendNotification();
     }
 
     const handleSelect = (value: number) => {
         setReminderFrequency(value)
     }
-
+    
     return (
         <ThemedView style={styles.container}>
             <ThemedText style={styles.title}>Stay Hydrated !</ThemedText>

@@ -17,6 +17,7 @@ export const Dropdown = ({onValueChange, value}: DropdownProps) => {
                 value: null,
             }}
             items={[
+                {label: '1 min', value: 1},
                 {label: '30 min', value: 30},
                 {label: '1H', value: 60},
                 {label: '2H', value: 120},
