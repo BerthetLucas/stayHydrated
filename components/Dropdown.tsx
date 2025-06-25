@@ -32,7 +32,8 @@ const pickerSelectStyles = StyleSheet.create({
         fontSize: 16,
         borderColor: 'purple',
         borderRadius: 8,
-        color: 'black',
-        width: 280
+        color: '#001e1d',
+        width: 280,
+        backgroundColor: "#abd1c6"
     },
 });
